@@ -1,0 +1,142 @@
+# ~/.aliases — 通用命令别名（被 .zshrc 和 .bashrc 共同引用）
+# =========================================================
+
+# ---------- 导航 ----------
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+alias -- -='cd -'
+
+# ---------- 列表 ----------
+alias ls='ls --color=auto'
+alias ll='ls -alFh'
+alias la='ls -A'
+alias l='ls -CF'
+alias lt='ls -lt'          # 按修改时间排序
+alias lS='ls -lSh'         # 按文件大小排序
+
+# ---------- 安全操作 ----------
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -pv'
+
+# ---------- 文本处理 ----------
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+
+# ---------- 系统 ----------
+alias df='df -h'
+alias du='du -sh'
+alias free='free -h'
+alias top='htop'
+alias ports='ss -tulnp'
+alias myip='curl -s https://api.ipify.org && echo'
+alias pubip='curl -s https://ifconfig.me && echo'
+alias path='echo -e ${PATH//:/\\n}'
+alias reload='source ~/.zshrc 2>/dev/null || source ~/.bashrc'
+
+# ---------- Git ----------
+alias g='git'
+alias gs='git status -sb'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit -m'
+alias gca='git commit --amend'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbd='git branch -d'
+alias gp='git push'
+alias gpf='git push --force-with-lease'
+alias gpl='git pull'
+alias gl='git log --oneline --graph --decorate --all'
+alias gla='git log --pretty=format:"%h %ad %s" --date=short'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gclean='git clean -fd'
+alias gundo='git reset HEAD~1 --mixed'
+
+# ---------- Docker ----------
+alias d='docker'
+alias dc='docker compose'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dprune='docker system prune -f'
+alias dlogs='docker logs -f'
+alias dexec='docker exec -it'
+dstop() { docker stop $(docker ps -q) 2>/dev/null || true; }
+
+# ---------- Node / npm ----------
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nig='npm install -g'
+alias nr='npm run'
+alias nrb='npm run build'
+alias nrt='npm run test'
+alias nrd='npm run dev'
+alias nls='npm list --depth=0'
+
+# ---------- Python ----------
+alias py='python3'
+alias pip='pip3'
+alias venv='python3 -m venv .venv && source .venv/bin/activate'
+alias activate='source .venv/bin/activate 2>/dev/null || source venv/bin/activate 2>/dev/null'
+
+# ---------- 编辑器 ----------
+alias v='vim'
+alias nv='nvim'
+alias c='code .'
+
+# ---------- 网络 ----------
+alias ping='ping -c 5'
+alias curl='curl -L'
+
+# ---------- 其他实用 ----------
+alias h='history | grep'
+alias cls='clear'
+alias clr='clear'
+alias q='exit'
+alias week='date +%V'
+alias now='date +"%Y-%m-%d %H:%M:%S"'
+alias timestamp='date +%s'
+alias weather='curl -s wttr.in/?0'
+alias cheatsh='curl -s cheat.sh/'   # 用法: cheatsh tar
+
+# ---------- 压缩/解压 ----------
+extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)  tar xjf "$1"    ;;
+            *.tar.gz)   tar xzf "$1"    ;;
+            *.tar.xz)   tar xJf "$1"    ;;
+            *.tar)      tar xf  "$1"    ;;
+            *.bz2)      bunzip2 "$1"    ;;
+            *.gz)       gunzip  "$1"    ;;
+            *.rar)      unrar x "$1"    ;;
+            *.zip)      unzip   "$1"    ;;
+            *.7z)       7z x    "$1"    ;;
+            *)          echo "'$1' 无法识别的压缩格式" ;;
+        esac
+    else
+        echo "'$1' 不是一个文件"
+    fi
+}
+
+# 快速创建目录并进入
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
+# 查看进程（模糊搜索）
+psgrep() { ps aux | grep -i "$1" | grep -v grep; }
+
+# 快速备份文件
+bak() { cp "$1" "${1}.bak.$(date +%Y%m%d%H%M%S)"; }

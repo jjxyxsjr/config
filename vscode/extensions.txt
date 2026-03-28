@@ -1,0 +1,86 @@
+# 主题 & 图标
+zhuangtongfa.material-theme
+pkief.material-icon-theme
+
+# 代码格式化
+esbenp.prettier-vscode
+dbaeumer.vscode-eslint
+
+# AI 辅助
+github.copilot
+github.copilot-chat
+
+# Python
+ms-python.python
+ms-python.vscode-pylance
+ms-python.black-formatter
+ms-python.isort
+ms-python.debugpy
+
+# JavaScript / TypeScript
+ms-vscode.vscode-typescript-next
+
+# Go
+golang.go
+
+# Rust
+rust-lang.rust-analyzer
+
+# Java
+redhat.java
+vscjava.vscode-maven
+vscjava.vscode-java-debug
+vscjava.vscode-java-test
+
+# C/C++
+ms-vscode.cpptools
+ms-vscode.cmake-tools
+
+# Shell
+timonwong.shellcheck
+foxundermoon.shell-format
+
+# Markdown
+yzhang.markdown-all-in-one
+davidanson.vscode-markdownlint
+shd101wyy.markdown-preview-enhanced
+
+# YAML
+redhat.vscode-yaml
+
+# TOML
+tamasfe.even-better-toml
+
+# Docker
+ms-azuretools.vscode-docker
+
+# Kubernetes
+ms-kubernetes-tools.vscode-kubernetes-tools
+
+# Database
+cweijan.vscode-database-client2
+
+# Git
+eamodio.gitlens
+donjayamanne.githistory
+mhutchie.git-graph
+
+# 效率工具
+christian-kohler.path-intellisense
+streetsidesoftware.code-spell-checker
+usernamehw.errorlens
+gruntfuggly.todo-tree
+formulahendry.auto-rename-tag
+formulahendry.auto-close-tag
+steoates.autoimport
+aaron-bond.better-comments
+oderwat.indent-rainbow
+mechatroner.rainbow-csv
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-containers
+ms-vscode.live-server
+rangav.vscode-thunder-client
+bradlc.vscode-tailwindcss
+vue.volar
+ms-vscode.hexeditor
+editorconfig.editorconfig
