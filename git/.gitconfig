@@ -1,0 +1,130 @@
+# ~/.gitconfig — 个人 Git 全局配置
+# 注意: 请将 name 和 email 替换为你自己的信息
+# =========================================================
+
+[user]
+    name  = Your Name
+    email = your.email@example.com
+
+[core]
+    editor          = vim
+    autocrlf        = input          # Linux/macOS: input; Windows: true
+    whitespace      = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile    = ~/.gitignore_global
+    pager           = less -FX
+    quotepath       = false          # 正确显示中文路径
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[push]
+    default      = current
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
+
+[merge]
+    conflictstyle = diff3
+    tool          = vimdiff
+
+[diff]
+    tool          = vimdiff
+    colorMoved    = default
+
+[rebase]
+    autoStash = true
+
+[credential]
+    helper = store
+
+[color]
+    ui          = auto
+    branch      = auto
+    diff        = auto
+    interactive = auto
+    status      = auto
+
+[color "branch"]
+    current = yellow bold
+    local   = green bold
+    remote  = cyan bold
+
+[color "diff"]
+    meta       = yellow bold
+    frag       = magenta bold
+    old        = red bold
+    new        = green bold
+    whitespace = red reverse
+
+[color "status"]
+    added     = green bold
+    changed   = yellow bold
+    untracked = red bold
+
+# ---------- Aliases ----------
+[alias]
+    # 状态
+    st    = status -sb
+    s     = status -sb
+
+    # 提交
+    c     = commit
+    cm    = commit -m
+    ca    = commit --amend
+    can   = commit --amend --no-edit
+
+    # 分支
+    co    = checkout
+    cob   = checkout -b
+    br    = branch
+    bra   = branch -a
+    brd   = branch -d
+
+    # 推拉
+    p     = push
+    pf    = push --force-with-lease
+    pl    = pull
+    pu    = push -u origin HEAD
+
+    # 日志
+    lg    = log --oneline --graph --decorate --all
+    ll    = log --pretty=format:"%C(yellow)%h%Creset %C(bold blue)%an%Creset %C(green)%ar%Creset %s" --decorate --all --graph
+    lf    = log --pretty=fuller
+    last  = log -1 HEAD --stat
+
+    # Diff
+    d     = diff
+    ds    = diff --staged
+    dw    = diff --word-diff
+
+    # Stash
+    save  = stash push -m
+    pop   = stash pop
+    sl    = stash list
+
+    # 撤销
+    undo  = reset HEAD~1 --mixed
+    unstage = reset HEAD --
+    discard = checkout --
+
+    # 其他
+    aliases  = config --get-regexp '^alias'
+    contributors = shortlog --summary --numbered --email
+    whoami   = config user.email
+    branches = branch -a
+    tags     = tag -l
+    remotes  = remote -v
+    stashes  = stash list
+    root     = rev-parse --show-toplevel
+
+[http]
+    # 国内用户可配置代理加速 GitHub 访问
+    # proxy = http://127.0.0.1:7890
+
+[url "https://github.com/"]
+    # 若遇到 SSH 不可用时使用 HTTPS
+    # insteadOf = git@github.com:
